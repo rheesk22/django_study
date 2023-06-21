@@ -19,7 +19,19 @@
 	
 	<body>
 		<h1> Onememo Form</h1>
-		
+
+		<!--GET방식-->
+		<form action="http://localhost:8000/onememos/writeMemo/" method="GET">
+			<button>GET방식 클릭 </button>	
+		</form>
+		<br>
+
+		<!--POST방식-->
+		<form action="http://localhost:8000/onememos/writeMemo/" method="POST">
+			{% csrf_token %}
+			<button>POST방식 클릭</button>
+		</form>
+
 		<form action="HTTP://localhost:8000/onememos/createMemo/" method ="POST" id="memoWriteForm">
 		{% csrf_token %}
 			<label for="memo"> 한 줄 메모 입력 </label>

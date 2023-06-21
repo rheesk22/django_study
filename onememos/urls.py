@@ -5,5 +5,7 @@ from . import views
 urlpatterns = [
 	path( '' , views.index, name='index' ),
 	path( 'createMemo/' , views.createMemo ),
+    
+	path('writeMemo/', views.writeMemo),
 ]
 
