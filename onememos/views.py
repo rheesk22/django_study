@@ -42,3 +42,31 @@ def writeMemo( request ) :
 #		return render( request, 'my_template.html', {'Method': 'POST 방식'})
 	else :
 		return HttpResponse('writePage요청??')
+
+def editPage( request, idx ) :
+#	return HttpResponse('수정페이지 = ' + idx)
+
+	article = Memo.objects.get(id=idx)
+	data = {'article': article}
+
+	return render( request, 'edit.html', data )
+
+def updateMemo( request ) :
+	idx = request.POST['idx']
+	memoContent = request.POST['memoContent']
+#	return HttpResponse( idx + ' ' + memoContent )
+#	return HttpResponse( f'현재 넘어온 idx는 {idx}번이고, 수정된 memoContent는 {memoContent} 입니다.' )
+
+
+#	db update 처리
+	db_article = Memo.objects.get(id=idx)
+	db_article.memo_text = memoContent
+	db_article.save()
+
+	return HttpResponseRedirect( reverse('index') )
+
+def deleteMemo( request, idx ) :
+	db_article = Memo.objects.get(id=idx)
+	db_article.delete()
+
+	return HttpResponseRedirect( reverse('index') )

@@ -46,6 +46,10 @@
 						{{ article.id }} .
 						{{ article.memo_text }}
 						{{ article.published_date|date:'Y-m-d(D) h:m'}}
+						&nbsp; &nbsp; &nbsp;
+						[<a href="./edit/{{article.id}}" style="font-weight: bold;">수정</a>]
+						&nbsp;
+						[<a href="./delete/{{article.id}}" style="font-weight: bold;">삭제</a>]
 					</li>
 				{% endfor %}
 			</ul>
