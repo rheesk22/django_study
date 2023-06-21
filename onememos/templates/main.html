@@ -24,13 +24,21 @@
 		{% csrf_token %}
 			<label for="memo"> 한 줄 메모 입력 </label>
 			<input type="text" id="memo" name="memoContent" size="100" placeholder ="내용을 작성하세요" autocomplete = "Off" >
-			<br>
-		</form>
-		
-		<div>
 			<button type="submit" form="memoWriteForm"> 한 줄 메모 등록하기</button>
+		</form>
+
+		<div style="padding-top:50px;">
+			<ul style="line-height: 2em;">
+				{% for article in lists %}
+					<li>
+						{{ article.id }} .
+						{{ article.memo_text }}
+						{{ article.published_date|date:'Y-m-d(D) h:m'}}
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
-		
+
 	</body>
 	
 </html>
